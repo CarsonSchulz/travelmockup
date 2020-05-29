@@ -1,0 +1,410 @@
+// Globals
+$primaryColor: #7730e1;
+$secondaryColor: #dbdf24;
+$borderRadius: 15px;
+
+//  Required Bootstrap
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// 	Bootstrap Colors
+$theme-colors: (
+  "primary": $primaryColor,
+  "secondary": $secondaryColor
+);
+
+// 	Bootstrap border-radius
+$border-radius: 		$borderRadius;
+$border-radius-lg: 		$borderRadius;
+$border-radius-sm: 		$borderRadius;
+
+$card-border-radius: 	$borderRadius;
+$card-border-color: 0;
+
+//	Bootstrap buttons
+.btn {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+$btn-font-weight: 500;
+
+// 	Bootstrap cards
+.card-img-top {
+    border-top-left-radius: $border-radius - 2px !important;
+    border-top-right-radius: $border-radius - 2px !important;
+}
+
+// Site Styles
+
+body, html {
+	height: 100%;
+}
+/* Fonts */
+body {
+	font-family: 'Roboto', sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Poppins', sans-serif !important;
+}
+.section-heading {
+	font-size: 30px;
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+/* Navigation */
+.main-nav-cont {
+	transition: padding 200ms ease-in-out, background 200ms ease-in-out;
+}
+.main-nav-cont-trans {
+	background-image: -webkit-gradient(linear,left top, left bottom,color-stop(0, rgba(0,0,0,.5)),to(transparent));
+    background-image: linear-gradient(to bottom,rgba(0,0,0,.5) 0,transparent 100%);
+    background-repeat: repeat-x;
+}
+.main-nav-cont-light {
+	background-color: white;
+}
+.main-nav .nav-item .nav-link {
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 3px;
+	transition: color 200ms ease-in-out;
+}
+.main-nav-trans .nav-item .nav-link {
+	color: #eee;
+
+	&:hover, &:active, &:focus {
+		color: #b8aff0;
+	}
+}
+.main-nav-light .nav-item .nav-link {
+	color: $primaryColor;
+
+	&:hover, &:active, &:focus {
+		color: #b8aff0;
+	}
+}
+.main-nav-hamburger i {
+	color: #aaa;
+}
+.mobile-nav {
+	position: fixed;
+	height: 100vh;
+	width: 0;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	background-color: $primaryColor;
+	overflow-x: hidden;
+	transition: width 200ms ease-in-out;
+}
+.mobile-nav-close {
+	position: absolute;
+	right: $spacer;
+	top: $spacer;
+	font-size: 50px;
+	color: $secondaryColor;
+}
+.mobile-nav-menu .nav-item .nav-link {
+	color: $secondaryColor;
+	font-size: 30px;
+	font-weight: 500;
+
+	&:hover, &:active, &:focus {
+		color: #b8aff0;
+	}
+}
+/* Forms */
+$form-label-weight: 500;
+
+.search-form {
+	color: #424242;
+}
+@keyframes ripple {
+	0% {
+		box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+	}
+	50% { 
+		box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
+	}
+	100% {
+		box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0);
+	}
+}
+.radio-custom {
+	margin: 16px 0;
+
+	input[type="radio"] {
+		display: none;
+		&:checked + label:before {
+			border-color: $primaryColor;
+			animation: ripple 0.2s linear forwards;   
+		}
+		&:checked + label:after {
+			transform: scale(1);
+		}
+	}
+	label {
+		font-weight: $form-label-weight;
+		display: inline-block;
+		min-height: 20px;
+		position: relative;
+		padding: 0 (24px + 10px);
+		margin-bottom: 0;
+		cursor: pointer;
+		
+		&:before, &:after {
+			position: absolute;            
+			content: '';  
+			border-radius: 50%;
+			transition: all .3s ease;
+			transition-property: transform, border-color;
+		}
+		&:before {
+			left: 0;
+			top: 0;
+			width: 24px;
+			height: 24px;
+			border: 2px solid $primaryColor;
+		}
+		&:after {
+			top: 24px / 2 - 10px / 2;
+			left: 24px / 2 - 10px / 2;
+			width:10px;
+			height:10px;
+			transform: scale(0);
+			background: $primaryColor;
+		}
+	}
+}
+.main-form-label {
+	font-weight: $form-label-weight;
+	font-size: 20px;
+}
+/* Main Page */
+.header-wrapper {
+	position: relative;
+	height: 100vh;
+	min-height: 25rem;
+	width: 100%;
+	overflow: hidden;
+	background-color: $primaryColor;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-webkit-transition: background-image 0.5s ease-in-out;
+	transition: background-image 0.5s ease-in-out;
+}
+.header-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.2;
+	z-index: 1;
+}
+.header-text {
+	position: relative;
+	color: #eee;
+	z-index: 5;
+}
+.header-text h1 {
+	font-weight: 600;
+	letter-spacing: 3px;
+	font-size: 6rem;
+}
+@media (max-width: 767.98px) and (orientation:portrait) {
+	.header-text h1 {
+		font-size: 2.5rem;
+	}
+}
+@media (max-width: 991.98px) and (orientation:landscape) {
+	.header-text h1 {
+		font-size: 2.5rem;
+	}
+}
+.header-blinking-cursor {
+	font-size: inherit;
+	-webkit-animation: 1s blink step-end infinite;
+	-moz-animation: 1s blink step-end infinite;
+	-ms-animation: 1s blink step-end infinite;
+	-o-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+}
+.space-wrapper {
+	height: 60vh;
+	min-height: 25rem;
+	width: 100%;
+	background-color: #eee;
+}
+@include media-breakpoint-down(md) {
+	.space-wrapper {
+		height: 60vh;
+	}
+}
+.search-cont {
+	position: relative;
+	margin-top: -100px;
+	z-index: 6;
+}
+.space-desc-wrapper {
+	background-color: #eee;
+}
+.space-desc-icon {
+	width: 100%;
+    height: 200px;
+}
+.destinations-wrapper {
+	color: #424242;
+	background-color: #fff;
+}
+.destination-card {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 300px;
+	border-radius: $borderRadius;
+}
+.destination-card:hover h3 {
+	bottom: $spacer * 1.4;
+}
+.destination-card-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.2;
+	z-index: 1;
+}
+.destination-card {
+
+	h3 {
+		position: absolute;
+		font-weight: 600;
+		color: #eee;
+		z-index: 3;
+		transition: bottom 200ms ease-in-out;
+		margin: 0;
+		left: $spacer;
+		bottom: $spacer;		
+	}
+
+	img {
+		position: relative;
+		height: 100%;
+		width: auto;		
+	}
+
+}
+.deals-wrapper {
+	background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+	background-blend-mode: screen;
+}
+.deal-bad-price {
+	text-decoration: line-through;
+}
+.deal-good-price {
+	color: green;
+	font-size: 2rem;
+}
+// 	Footer
+footer {
+	color: #777;
+	
+	h5 {
+		color: #424242;
+	}
+	
+	p {
+		margin-bottom: $spacer - 0.4;
+	}
+}
+.footer-menu .nav-item .nav-link {
+	color: #777;
+	padding-left: 0;
+
+	&:hover, &:active, &:focus {
+		color: $primaryColor;
+	}
+}
+.footer-social {
+	background-color: $primaryColor;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 50%;
+	color: $secondaryColor;
+}
+/*  Animations  */
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 30px;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/input-group";
+@import "../node_modules/bootstrap/scss/buttons";
