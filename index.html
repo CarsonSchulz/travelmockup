@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Carson Schulz">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha256-GqiEX9BuR1rv5zPU5Vs2qS/NSHl1BJyBcjQYJ6ycwD4=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="mobile-nav d-block d-md-none" id="mobileNav">
+        <a id="mobileNavClose"><div class="mobile-nav-close"><i class="las la-times"></i></div></a>
+        <div class="d-flex flex-wrap h-100 align-items-center justify-content-center">
+            <ul class="nav mobile-nav-menu flex-column text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="w-100 fixed-top main-nav-cont main-nav-cont-trans pt-5 pb-3" id="mainNavCont">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6 col-md-3 col-xl-2">
+                    <img src="images/logo/default_w.svg" class="img-fluid" id="navLogo" alt="Main logo">
+                </div>
+                <div class="col-md-9 col-xl-10 d-none d-md-block">
+                    <ul class="nav main-nav main-nav-trans justify-content-end" id="mainNav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 d-md-none text-right">
+                    <a class="main-nav-hamburger mr-4" id="mobileHamburger"><i class="las la-bars la-2x"></i></a>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="header-wrapper d-flex flex-wrap" id="headerWrapper">
+        <div class="header-overlay"></div>
+        <div class="container header-text align-self-center" data-aos="zoom-in-down" data-aos-duration="1000">
+            <h1>Explore the Beauty of <span id="cityTyper"></span><span class="header-blinking-cursor">|</span></h1>
+        </div>
+    </div>
+    <div class="space-wrapper" id="searchFormWrapper">
+        <div class="search-cont container" id="searchFormCont">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <form class="search-form" id="searchForm">
+                        <div class="form-check form-check-inline radio-custom">
+                            <input class="form-check-input" type="radio" name="flightType" id="flightTypeRT" value="rt" checked>
+                            <label class="form-check-label" for="flightTypeRT">Round Trip</label>
+                        </div>
+                        <div class="form-check form-check-inline radio-custom">
+                            <input class="form-check-input" type="radio" name="flightType" id="flightTypeOW" value="ow">
+                            <label class="form-check-label" for="flightTypeOW">One Way</label>
+                        </div>
+                        <div class="form-row mt-md-3 mt-0">
+                            <div class="col-12 mt-3 mt-md-0 col-md">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-plane-departure"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0" aria-label="Departure city" placeholder="Where are we leaving?">
+                                </div>
+                            </div>
+                            <div class="col-1 text-center d-none d-md-block">
+                                <i class="las la-exchange-alt la-2x"></i>
+                            </div>
+                            <div class="col-12 mt-3 mt-md-0 col-md">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-plane-arrival"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0" aria-label="Arrival city" placeholder="Where are we going?">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-3 align-items-center">
+                            <div class="col">
+                                <label>Departure Date</label>
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-calendar-day"></i></span>
+                                    </div>
+                                    <input type="date" class="form-control border-left-0" aria-label="Departure date">
+                                </div>
+                            </div>
+                            <div class="col-1" id="searchSepCol"></div>
+                            <div class="col" id="searchReturnCol">
+                                <label>Return Date</label>
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-calendar-day"></i></span>
+                                    </div>
+                                    <input type="date" class="form-control border-left-0" aria-label="Arrival date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-3 mb-4 align-items-center">
+                            <div class="col-12 col-md">
+                                <label># of adults</label>
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-user-alt"></i></span>
+                                    </div>
+                                    <input type="number" class="form-control border-left-0" aria-label="Number of adults" placeholder="2">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md">
+                                <label># of children</label>
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-baby"></i></span>
+                                    </div>
+                                    <input type="number" class="form-control border-left-0" aria-label="Number of children" placeholder="1">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label>Class</label>
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0"><i class="las la-money-bill"></i></span>
+                                    </div>
+                                    <select class="custom-select">
+                                        <option selected>Economy</option>
+                                        <option value="1">Premium Economy</option>
+                                        <option value="2">Business</option>
+                                        <option value="3">First Class</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary shadow">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-desc-wrapper py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center" data-aos="fade-up">
+                    <div class="row w-100 justify-content-center m-0">
+                        <div class="col-lg-6 col-md-7 col-5 text-center">
+                            <img src="images/icons/hotelcart.svg" class="img-fluid mb-5" alt="Hotel cart">
+                        </div>
+                    </div>
+                    <h6>Find Hotels Near Your Destination</h6>
+                    <p class="text-muted">Volutpat blandit aliquam etiam erat velit scelerisque in dictum non. Pretium viverra suspendisse potenti nullam.</p>
+                </div>
+                <div class="col-md text-center" data-aos="fade-up">
+                    <div class="row w-100 justify-content-center m-0">
+                        <div class="col-lg-6 col-md-7 col-5 text-center">
+                            <img src="images/icons/boardingpass.svg" class="img-fluid mb-5" alt="Boarding Pass">
+                        </div>
+                    </div>
+                    <h6>Book With The Airline</h6>
+                    <p class="text-muted">SAdipiscing commodo elit at imperdiet dui accumsan sit amet.</p>
+                </div>
+                <div class="col text-center" data-aos="fade-up">
+                    <div class="row w-100 justify-content-center m-0">
+                        <div class="col-lg-6 col-md-7 col-5 text-center">
+                            <img src="images/icons/wallet.svg" class="img-fluid mb-5" alt="Wallet">
+                        </div>
+                    </div>
+                    <h6>Find The Best Deals</h6>
+                    <p class="text-muted">At urna condimentum mattis pellentesque id nibh. Augue ut lectus arcu bibendum at varius vel pharetra vel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="destinations-wrapper py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 class="section-heading">Top Destinations</h1>
+                    <p class="text-muted">See where our customers love to go!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mt-3" data-aos="zoom-in">
+                    <a href="#">
+                        <div class="destination-card shadow">
+                            <div class="destination-card-overlay"></div>
+                            <img src="images/header-backgrounds/athens.jpg" alt="Athens">
+                            <h3>Athens, Greece</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mt-3" data-aos="zoom-in">
+                    <a href="#">
+                        <div class="destination-card shadow">
+                            <div class="destination-card-overlay"></div>
+                            <img src="images/header-backgrounds/orlando.jpg" alt="Orlando">
+                            <h3>Orlando, Florida</h3>
+                        </div>                        
+                    </a>
+                </div>
+                <div class="col-md-4 mt-3" data-aos="zoom-in">
+                    <a href="#">
+                        <div class="destination-card shadow">
+                            <div class="destination-card-overlay"></div>
+                            <img src="images/header-backgrounds/seattle.jpg" alt="New York City">
+                            <h3>New York City, New York</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mt-3" data-aos="zoom-in">
+                    <a href="#">
+                        <div class="destination-card shadow">
+                            <div class="destination-card-overlay"></div>
+                            <img src="images/header-backgrounds/cologne.jpg" alt="Cologne">
+                            <h3>Cologne, Germany</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mt-3" data-aos="zoom-in">
+                    <a href="#">
+                        <div class="destination-card shadow">
+                            <div class="destination-card-overlay"></div>
+                            <img src="images/header-backgrounds/seoul.jpg" alt="Seoul">
+                            <h3>Seoul, South Korea</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mt-3" data-aos="zoom-in">
+                    <a href="#">
+                        <div class="destination-card shadow">
+                            <div class="destination-card-overlay"></div>
+                            <img src="images/header-backgrounds/paris.jpg" alt="Paris">
+                            <h3>Paris, France</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="deals-wrapper">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 class="section-heading">Hottest Flights</h1>
+                    <p class="text-muted">Round-trips from Orlando</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-6 mb-3" data-aos="zoom-in">
+                    <div class="card shadow">
+                        <img src="images/cities/bermuda.jpg" class="card-img-top" alt="Bermuda">
+                        <div class="card-body">
+                            <div class="row w-100 mb-3 align-items-center">
+                                <div class="col-7">
+                                    <h4 class="card-title m-0">Bermuda</h4>
+                                </div>
+                                <div class="col-5 text-right p-0">
+                                    <span class="text-muted deal-bad-price small">$257</span>
+                                    <span class="deal-good-price">$180</span>
+                                </div>
+                            </div>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-primary">Book now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-3" data-aos="zoom-in">
+                    <div class="card shadow">
+                        <img src="images/cities/cleveland.jpg" class="card-img-top" alt="Cleveland">
+                        <div class="card-body">
+                            <div class="row w-100 mb-3 align-items-center">
+                                <div class="col-7">
+                                    <h4 class="card-title m-0">Cleveland</h4>
+                                </div>
+                                <div class="col-5 text-right p-0">
+                                    <span class="text-muted deal-bad-price small">$182</span>
+                                    <span class="deal-good-price">$90</span>
+                                </div>
+                            </div>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-primary">Book now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-3" data-aos="zoom-in">
+                    <div class="card shadow">
+                        <img src="images/cities/london.jpg" class="card-img-top" alt="London">
+                        <div class="card-body">
+                            <div class="row w-100 mb-3 align-items-center">
+                                <div class="col-7">
+                                    <h4 class="card-title m-0">London</h4>
+                                </div>
+                                <div class="col-5 text-right p-0">
+                                    <span class="text-muted deal-bad-price small">$782</span>
+                                    <span class="deal-good-price">$400</span>
+                                </div>
+                            </div>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-primary">Book now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-3" data-aos="zoom-in">
+                    <div class="card shadow">
+                        <img src="images/cities/nashville.jpg" class="card-img-top" alt="Nashville">
+                        <div class="card-body">
+                            <div class="row w-100 mb-3 align-items-center">
+                                <div class="col-7">
+                                    <h4 class="card-title m-0">Nashville</h4>
+                                </div>
+                                <div class="col-5 text-right p-0">
+                                    <span class="text-muted deal-bad-price small">$142</span>
+                                    <span class="deal-good-price">$70</span>
+                                </div>
+                            </div>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-primary">Book now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-3" data-aos="zoom-in">
+                    <div class="card shadow">
+                        <img src="images/cities/sanjuan.jpg" class="card-img-top" alt="San Juan">
+                        <div class="card-body">
+                            <div class="row w-100 mb-3 align-items-center">
+                                <div class="col-7">
+                                    <h4 class="card-title m-0">San Juan</h4>
+                                </div>
+                                <div class="col-5 text-right p-0">
+                                    <span class="text-muted deal-bad-price small">$212</span>
+                                    <span class="deal-good-price">$75</span>
+                                </div>
+                            </div>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-primary">Book now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-3" data-aos="zoom-in">
+                    <div class="card shadow">
+                        <img src="images/cities/syracuse.jpg" class="card-img-top" alt="Syracuse">
+                        <div class="card-body">
+                            <div class="row w-100 mb-3 align-items-center">
+                                <div class="col-7">
+                                    <h4 class="card-title m-0">Syracuse</h4>
+                                </div>
+                                <div class="col-5 text-right p-0">
+                                    <span class="text-muted deal-bad-price small">$197</span>
+                                    <span class="deal-good-price">$85</span>
+                                </div>
+                            </div>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-primary">Book now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4 col-xl-3 align-self-center">
+                    <img src="images/logo/default.svg">
+                </div>
+                <div class="col-6 col-md-3 offset-md-1 mt-4 mt-md-0">
+                    <h5 class="mb-4">Links</h5>
+                    <ul class="nav flex-column footer-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 offset-md-1 mt-4 mt-md-0">
+                    <h5 class="mb-4">Contact</h5>
+                    <p>+1 (888) 888-8888</p>
+                    <p>admin@carsons.me</p>
+                    <p>12345 Website Ave.</p>
+                    <p>Orlando, Florida</p>
+                </div>
+            </div>
+            <hr class="my-5">
+            <div class="d-flex justify-content-center">
+                <div class="footer-social mx-3 shadow">
+                    <i class="lab la-twitter la-2x"></i>
+                </div>                
+                <div class="footer-social mx-3 shadow">
+                    <i class="lab la-facebook-f la-2x"></i>
+                </div>                
+                <div class="footer-social mx-3 shadow">
+                    <i class="lab la-instagram la-2x"></i>
+                </div>                
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha256-pQBbLkFHcP1cy0C8IhoSdxlm0CtcH5yJ2ki9jjgR03c=" crossorigin="anonymous"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/searchform.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
